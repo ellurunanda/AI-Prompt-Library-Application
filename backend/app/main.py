@@ -39,9 +39,10 @@ app = FastAPI(
 )
 
 # CORS configuration
-origins = os.getenv("CORS_ORIGINS",  "http://localhost:5173",
-    "https://ai-prompt-library-application-frontend.onrender.com",
-    "https://ai-prompt-library-application.onrender.com",).split(",")
+origins = ["http://localhost:5173",
+            "http://localhost:3000",
+            "https://ai-prompt-library-application-frontend.onrender.com",
+            "https://ai-prompt-library-application.onrender.com"]
 
 app.add_middleware(
     CORSMiddleware,
