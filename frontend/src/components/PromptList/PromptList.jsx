@@ -16,7 +16,7 @@ export default function PromptList() {
       .getPrompts()
       .then((data) => {
         if (!controller.signal.aborted) {
-          setPrompts(data);
+          setPrompts(Array.isArray(data) ? data : []);
         }
       })
       .catch(() => {
@@ -75,7 +75,8 @@ export default function PromptList() {
         </div>
       ) : (
         <div className="prompt-grid">
-          {prompts.map((prompt) => (
+          {Array.isArray(prompts) &&
+            prompts.map((prompt) => (
             <Link
               key={prompt.id}
               to={`/prompts/${prompt.id}`}
