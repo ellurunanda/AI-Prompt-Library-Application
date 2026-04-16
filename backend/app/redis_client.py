@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
-REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+redis_url = os.getenv("REDIS_URL")
+redis_client = redis.from_url(redis_url, decode_responses=True)
 
 # Attempt connection; fall back gracefully if Redis is unavailable
 try:
