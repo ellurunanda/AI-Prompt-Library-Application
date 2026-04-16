@@ -75,7 +75,7 @@ export default function PromptList() {
         </div>
       ) : (
         <div className="prompt-grid">
-          {response.map((prompt) => (
+          {prompts.map((prompt) => (
             <Link
               key={prompt.id}
               to={`/prompts/${prompt.id}`}
