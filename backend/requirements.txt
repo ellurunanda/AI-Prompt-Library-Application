@@ -1,16 +1,7 @@
-# Core framework
-fastapi==0.115.6
-uvicorn[standard]==0.32.1
-
-# Database (SQLAlchemy + optional PostgreSQL driver)
-sqlalchemy==2.0.36
-alembic==1.14.0
-# psycopg2-binary is needed when using PostgreSQL (Docker / production)
-psycopg2-binary==2.9.10
-
-# Cache
-redis==5.2.1
-
-# Utilities
+fastapi==0.110.0
+uvicorn==0.29.0
+sqlalchemy==2.0.29
+psycopg2-binary==2.9.9
+redis==5.0.3
+pydantic==2.6.4
 python-dotenv==1.0.1
-pydantic==2.10.4

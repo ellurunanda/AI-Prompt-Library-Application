@@ -5,18 +5,26 @@ WORKDIR /app
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
+    g++ \
+    build-essential \
     libpq-dev \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy and install Python dependencies
+# Copy requirements first
 COPY requirements.txt .
+
+# Upgrade pip + setuptools + wheel
+RUN pip install --upgrade pip setuptools wheel
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy project files
 COPY . .
 
 # Expose port
 EXPOSE 8000
 
-# Start the FastAPI server
+# Run FastAPI
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
